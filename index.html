@@ -1,0 +1,279 @@
+<!doctype html>
+<html lang="de">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="knollinnovations – Entwicklung, Automatisierung und Mechatronik. Individuelle technische Lösungen von der Idee bis zur Umsetzung.">
+  <meta name="theme-color" content="#071a2b">
+  <title>knollinnovations | Entwicklung · Automatisierung · Mechatronik</title>
+  <style>
+    :root {
+      --navy: #071a2b;
+      --navy-2: #102b42;
+      --blue: #0877dc;
+      --blue-light: #4eb5ff;
+      --ink: #12283b;
+      --muted: #52677a;
+      --paper: #ffffff;
+      --soft: #f2f7fb;
+      --line: #dce7ef;
+      --max: 1160px;
+    }
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      color: var(--ink);
+      background: var(--paper);
+      line-height: 1.65;
+    }
+    a { color: inherit; }
+    .wrap { width: min(var(--max), calc(100% - 40px)); margin-inline: auto; }
+    .header {
+      position: sticky; top: 0; z-index: 10; background: rgba(255,255,255,.96);
+      backdrop-filter: blur(12px); border-bottom: 1px solid rgba(220,231,239,.85);
+    }
+    .nav { min-height: 82px; display: flex; align-items: center; justify-content: space-between; gap: 24px; }
+    .brand { display: inline-flex; align-items: center; gap: 11px; text-decoration: none; line-height: 1.1; }
+    .brand-mark { width: 42px; height: 42px; color: var(--blue); flex: 0 0 auto; }
+    .brand-name { font-size: clamp(1.25rem, 2.6vw, 1.85rem); font-weight: 760; letter-spacing: -.055em; color: var(--navy); }
+    .brand-name span { color: var(--blue); }
+    .brand-sub { display: block; margin-top: 5px; color: #52677a; font-size: .61rem; letter-spacing: .17em; font-weight: 700; }
+    .navlinks { display: flex; align-items: center; gap: clamp(14px, 2.5vw, 30px); }
+    .navlinks a { font-size: .9rem; font-weight: 650; text-decoration: none; color: var(--navy); }
+    .navlinks a:hover, .navlinks a:focus-visible { color: var(--blue); }
+    .menu-button { display: none; border: 1px solid var(--line); background: white; color: var(--navy); padding: 9px 12px; border-radius: 8px; font: inherit; }
+    .hero {
+      position: relative; overflow: hidden; isolation: isolate; color: white;
+      background:
+        radial-gradient(ellipse at 78% 35%, rgba(18,111,180,.45), transparent 34%),
+        radial-gradient(ellipse at 95% 110%, rgba(7,119,220,.22), transparent 36%),
+        linear-gradient(112deg, #061522 0%, #0a2032 55%, #102f48 100%);
+    }
+    .hero:before {
+      content: ""; position: absolute; inset: 0 0 0 44%; z-index: -1; opacity: .56;
+      background-image: linear-gradient(90deg, #081b2b 0%, transparent 35%), repeating-linear-gradient(0deg, transparent 0 43px, rgba(117,190,235,.11) 44px 45px), repeating-linear-gradient(90deg, transparent 0 43px, rgba(117,190,235,.11) 44px 45px);
+      mask-image: linear-gradient(90deg, transparent, black 30%, black);
+    }
+    .hero-inner { min-height: 485px; padding-block: 78px 82px; display: grid; grid-template-columns: 1.08fr .92fr; align-items: center; gap: 38px; }
+    .eyebrow { margin: 0 0 15px; text-transform: uppercase; letter-spacing: .24em; font-size: .75rem; font-weight: 800; color: #91d2ff; }
+    h1 { max-width: 700px; margin: 0; font-size: clamp(2.5rem, 5vw, 4.5rem); line-height: 1.04; letter-spacing: -.055em; }
+    .hero-copy { max-width: 590px; color: #d5e5f0; font-size: clamp(1rem, 1.5vw, 1.16rem); margin: 24px 0 30px; }
+    .button { display: inline-flex; align-items: center; justify-content: center; gap: 12px; min-height: 48px; padding: 12px 22px; border-radius: 5px; background: var(--blue); color: white; text-decoration: none; font-weight: 750; border: 1px solid var(--blue); transition: transform .18s, background .18s; }
+    .button:hover { background: #0067c4; transform: translateY(-1px); }
+    .button.secondary { background: transparent; border-color: #7ca7c5; color: white; }
+    .hero-art { min-height: 300px; display: grid; place-items: center; position: relative; }
+    .orbit { position: absolute; width: min(100%, 420px); aspect-ratio: 1; border: 1px solid rgba(119,202,255,.22); border-radius: 50%; transform: rotate(-25deg) scaleY(.68); }
+    .orbit:before, .orbit:after { content: ""; position: absolute; inset: 12%; border: 1px solid rgba(119,202,255,.2); border-radius: 50%; }
+    .orbit:after { inset: 26%; }
+    .machine-card { width: min(100%, 390px); aspect-ratio: 1.05; position: relative; display: grid; place-items: center; }
+    .machine-card:before { content: ""; position: absolute; inset: 18% 9% 12%; background: linear-gradient(135deg, rgba(59,157,224,.2), rgba(10,33,52,.2)); border: 1px solid rgba(124,204,255,.32); transform: skewY(-8deg); box-shadow: 0 30px 90px rgba(0,0,0,.25); }
+    .machine-svg { width: 92%; max-height: 350px; position: relative; filter: drop-shadow(0 18px 20px rgba(0,0,0,.28)); }
+    .hero-label { position: absolute; right: 0; bottom: 6%; background: rgba(3,18,30,.78); border-left: 3px solid var(--blue-light); padding: 13px 17px; color: #eaf7ff; font-size: .82rem; font-weight: 700; }
+    .services { padding: 44px 0; background: #fff; }
+    .service-grid { display: grid; grid-template-columns: repeat(4, 1fr); }
+    .service { padding: 5px 27px 4px; border-right: 1px solid var(--line); }
+    .service:first-child { padding-left: 0; }
+    .service:last-child { border-right: 0; padding-right: 0; }
+    .service-icon { width: 39px; height: 39px; color: var(--blue); margin-bottom: 8px; }
+    h2 { font-size: clamp(1.8rem, 3.4vw, 2.65rem); line-height: 1.15; letter-spacing: -.04em; margin: 0 0 18px; color: var(--navy); }
+    h3 { margin: 0 0 8px; font-size: 1.05rem; line-height: 1.3; color: var(--navy); }
+    .service p { margin: 0; color: var(--muted); font-size: .93rem; }
+    .about { background: var(--soft); padding: 82px 0; }
+    .about-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 70px; align-items: center; }
+    .section-kicker { margin: 0 0 12px; color: var(--blue); font-size: .73rem; font-weight: 800; letter-spacing: .22em; text-transform: uppercase; }
+    .about-copy { color: #3c5367; max-width: 600px; margin: 0 0 24px; }
+    .about-art { min-height: 300px; position: relative; overflow: hidden; border-radius: 4px; background: linear-gradient(145deg, #d8e8f2, #829caf 45%, #203d53); }
+    .about-art:before { content: ""; position: absolute; inset: 0; opacity: .3; background: repeating-linear-gradient(0deg, transparent 0 25px, rgba(255,255,255,.5) 26px 27px), repeating-linear-gradient(90deg, transparent 0 25px, rgba(255,255,255,.5) 26px 27px); }
+    .gear { position: absolute; width: 190px; height: 190px; right: 18%; top: 15%; color: rgba(255,255,255,.86); filter: drop-shadow(0 15px 15px rgba(0,0,0,.22)); }
+    .gear-two { position: absolute; width: 105px; height: 105px; right: 8%; bottom: 8%; color: rgba(8,119,220,.9); }
+    .art-caption { position: absolute; bottom: 0; left: 0; right: 0; padding: 24px; color: white; font-weight: 750; background: linear-gradient(transparent, rgba(4,19,31,.85)); }
+    .process { padding: 78px 0; }
+    .section-intro { max-width: 660px; color: var(--muted); margin: 0 0 34px; }
+    .process-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 22px; }
+    .process-card { border: 1px solid var(--line); border-radius: 8px; padding: 25px; background: white; }
+    .process-number { color: var(--blue); font-size: .8rem; font-weight: 850; letter-spacing: .15em; margin-bottom: 16px; }
+    .process-card p { color: var(--muted); margin: 0; font-size: .94rem; }
+    .contact { background: var(--navy); color: white; padding: 68px 0; }
+    .contact-inner { display: flex; justify-content: space-between; align-items: center; gap: 35px; }
+    .contact h2 { color: white; margin-bottom: 12px; }
+    .contact p { color: #c4d7e5; max-width: 650px; margin: 0; }
+    .contact .button { flex: 0 0 auto; }
+    footer { background: #04111d; color: #b8c9d5; padding: 25px 0; font-size: .83rem; }
+    .footer-inner { display: flex; justify-content: space-between; align-items: center; gap: 20px; flex-wrap: wrap; }
+    footer a { color: #dbeaf4; text-decoration: none; }
+    footer a:hover { color: white; }
+    .footer-links { display: flex; gap: 20px; }
+    :focus-visible { outline: 3px solid #73c6ff; outline-offset: 3px; }
+    @media (max-width: 850px) {
+      .nav { min-height: 72px; }
+      .menu-button { display: inline-flex; }
+      .navlinks { display: none; position: absolute; top: 72px; left: 0; right: 0; padding: 18px 22px 22px; background: white; border-bottom: 1px solid var(--line); flex-direction: column; align-items: stretch; gap: 0; }
+      .navlinks.open { display: flex; }
+      .navlinks a { padding: 11px 0; }
+      .hero-inner { grid-template-columns: 1fr; padding-block: 65px; gap: 15px; }
+      .hero-art { min-height: 260px; }
+      .machine-card { max-width: 310px; }
+      .hero-label { right: 5%; bottom: 0; }
+      .service-grid { grid-template-columns: repeat(2, 1fr); gap: 26px 0; }
+      .service:nth-child(2) { border-right: 0; padding-right: 0; }
+      .service:nth-child(3) { padding-left: 0; }
+      .about-grid { grid-template-columns: 1fr; gap: 32px; }
+      .about-art { min-height: 260px; }
+      .contact-inner { align-items: flex-start; flex-direction: column; }
+    }
+    @media (max-width: 540px) {
+      .wrap { width: min(var(--max), calc(100% - 30px)); }
+      .brand-mark { width: 34px; height: 34px; }
+      .brand-sub { font-size: .5rem; letter-spacing: .12em; }
+      .hero-inner { padding-block: 52px 42px; }
+      h1 { font-size: clamp(2.35rem, 12vw, 3.4rem); }
+      .hero-art { min-height: 220px; }
+      .service-grid, .process-grid { grid-template-columns: 1fr; }
+      .service, .service:first-child, .service:nth-child(3), .service:last-child { padding: 0 0 22px; border-right: 0; border-bottom: 1px solid var(--line); }
+      .service:last-child { border-bottom: 0; padding-bottom: 0; }
+      .about, .process { padding: 58px 0; }
+      .footer-inner { align-items: flex-start; flex-direction: column; }
+    }
+  </style>
+</head>
+<body>
+  <header class="header">
+    <div class="wrap nav">
+      <a class="brand" href="#start" aria-label="knollinnovations – Startseite">
+        <svg class="brand-mark" viewBox="0 0 48 48" fill="none" aria-hidden="true">
+          <path d="M19 4h10l1.5 5.1a16 16 0 0 1 3.7 1.5l4.8-2.1 5 8.7-3.8 3.7a16 16 0 0 1 0 4.2l3.8 3.7-5 8.7-4.8-2.1a16 16 0 0 1-3.7 1.5L29 42H19l-1.5-5.1a16 16 0 0 1-3.7-1.5L9 37.5l-5-8.7 3.8-3.7a16 16 0 0 1 0-4.2L4 17.2l5-8.7 4.8 2.1a16 16 0 0 1 3.7-1.5L19 4Z" stroke="currentColor" stroke-width="3" stroke-linejoin="round"/>
+          <circle cx="24" cy="23" r="7" stroke="currentColor" stroke-width="3"/>
+        </svg>
+        <span><span class="brand-name">knoll<span>innovations</span></span><span class="brand-sub">ENTWICKLUNG · AUTOMATISIERUNG · MECHATRONIK</span></span>
+      </a>
+      <button class="menu-button" id="menuButton" aria-expanded="false" aria-controls="navlinks">Menü ☰</button>
+      <nav class="navlinks" id="navlinks" aria-label="Hauptnavigation">
+        <a href="#start">Startseite</a><a href="#leistungen">Leistungen</a><a href="#ablauf">Vorgehensweise</a><a href="#ueber-uns">Über uns</a><a href="#kontakt">Kontakt</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero" id="start">
+      <div class="wrap hero-inner">
+        <div>
+          <p class="eyebrow">knollinnovations</p>
+          <h1>Technik, die Ideen in Bewegung bringt.</h1>
+          <p class="hero-copy">Entwicklung und Automatisierung im Bereich Mechatronik – durchdacht, individuell und auf Ihre Anforderungen abgestimmt.</p>
+          <a class="button" href="#kontakt">Projekt besprechen <span aria-hidden="true">→</span></a>
+        </div>
+        <div class="hero-art" aria-hidden="true">
+          <div class="orbit"></div>
+          <div class="machine-card">
+            <svg class="machine-svg" viewBox="0 0 430 390" fill="none">
+              <defs>
+                <linearGradient id="metal" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#f0f7fb"/><stop offset=".42" stop-color="#91b5cc"/><stop offset=".7" stop-color="#456c86"/><stop offset="1" stop-color="#d4e6f0"/></linearGradient>
+                <linearGradient id="darkmetal" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#36566d"/><stop offset="1" stop-color="#10283b"/></linearGradient>
+              </defs>
+              <ellipse cx="220" cy="344" rx="160" ry="20" fill="#020d17" opacity=".45"/>
+              <path d="M105 321h228l-18 22H87l18-22Z" fill="url(#darkmetal)" stroke="#8db7d1" stroke-width="2"/>
+              <path d="M127 312V190h45v122M287 312V232h35v80" stroke="url(#metal)" stroke-width="16"/>
+              <path d="M130 191 118 157l37-29 66 22 24 45-31 28-60-10-24-22Z" fill="url(#metal)" stroke="#d3e8f5" stroke-width="3"/>
+              <circle cx="163" cy="168" r="29" fill="url(#darkmetal)" stroke="#a7d0e9" stroke-width="4"/>
+              <circle cx="163" cy="168" r="12" fill="#0b2235" stroke="#6abfff" stroke-width="4"/>
+              <path d="m188 146 62-74 39 29-52 78-28 13-21-46Z" fill="url(#metal)" stroke="#b9d7e8" stroke-width="3"/>
+              <circle cx="270" cy="91" r="28" fill="url(#darkmetal)" stroke="#c6e4f5" stroke-width="4"/>
+              <circle cx="270" cy="91" r="11" fill="#0a2236" stroke="#6abfff" stroke-width="4"/>
+              <path d="m285 112 41 50-22 34-47-45 28-39Z" fill="url(#metal)" stroke="#c5e2f1" stroke-width="3"/>
+              <circle cx="309" cy="172" r="21" fill="url(#darkmetal)" stroke="#b6d8eb" stroke-width="4"/>
+              <path d="m306 191 10 47-19 43h-23l7-54-2-34 27-2Z" fill="url(#metal)" stroke="#c4e1f1" stroke-width="3"/>
+              <path d="M276 276h34v17h-34z" fill="#1688e5" stroke="#9bd8ff" stroke-width="3"/>
+              <path d="M281 293h24l-3 25h-18l-3-25Z" fill="url(#darkmetal)" stroke="#8dbbd7" stroke-width="2"/>
+              <path d="M111 315h218" stroke="#51b9ff" stroke-width="3" stroke-linecap="round"/>
+              <path d="M84 348h267" stroke="#4eb5ff" stroke-width="2" opacity=".7"/>
+              <circle cx="115" cy="332" r="4" fill="#70caff"/><circle cx="324" cy="332" r="4" fill="#70caff"/>
+            </svg>
+          </div>
+          <div class="hero-label">Entwicklung · Automatisierung · Mechatronik</div>
+        </div>
+      </div>
+    </section>
+
+    <section class="services" id="leistungen">
+      <div class="wrap service-grid">
+        <article class="service">
+          <svg class="service-icon" viewBox="0 0 40 40" fill="none" aria-hidden="true"><path d="M14 25c-1.5-2-4-4-4-8a10 10 0 1 1 20 0c0 4-2.5 6-4 8l-1 4H15l-1-4Z" stroke="currentColor" stroke-width="2"/><path d="M16 33h8M17 37h6M20 10v8l5-3" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+          <h3>Entwicklung</h3><p>Von der ersten Idee bis zur technischen Lösung – strukturiert und praxisnah.</p>
+        </article>
+        <article class="service">
+          <svg class="service-icon" viewBox="0 0 40 40" fill="none" aria-hidden="true"><path d="M16 3h8l1.5 5a13 13 0 0 1 3.5 1.5l4.8-2 4 7-3.7 3.5a13 13 0 0 1 0 4l3.7 3.5-4 7-4.8-2a13 13 0 0 1-3.5 1.5L24 37h-8l-1.5-5a13 13 0 0 1-3.5-1.5l-4.8 2-4-7L6 22a13 13 0 0 1 0-4l-3.8-3.5 4-7 4.8 2A13 13 0 0 1 14.5 8L16 3Z" stroke="currentColor" stroke-width="2"/><circle cx="20" cy="20" r="5" stroke="currentColor" stroke-width="2"/></svg>
+          <h3>Automatisierung</h3><p>Effizientere Abläufe durch intelligente, zuverlässige Automatisierungslösungen.</p>
+        </article>
+        <article class="service">
+          <svg class="service-icon" viewBox="0 0 40 40" fill="none" aria-hidden="true"><rect x="10" y="10" width="20" height="20" rx="2" stroke="currentColor" stroke-width="2"/><path d="M15 2v6m5-6v6m5-6v6M15 32v6m5-6v6m5-6v6M2 15h6m-6 5h6m-6 5h6m24-10h6m-6 5h6m-6 5h6" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+          <h3>Mechatronik</h3><p>Mechanik, Elektronik und Software sinnvoll zu einem System verbinden.</p>
+        </article>
+        <article class="service">
+          <svg class="service-icon" viewBox="0 0 40 40" fill="none" aria-hidden="true"><circle cx="17" cy="22" r="11" stroke="currentColor" stroke-width="2"/><circle cx="17" cy="22" r="5" stroke="currentColor" stroke-width="2"/><path d="m19 20 15-15m-8 0h8v8" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          <h3>Individuelle Lösungen</h3><p>Passgenaue Konzepte, abgestimmt auf Ihre Aufgabenstellung und Rahmenbedingungen.</p>
+        </article>
+      </div>
+    </section>
+
+    <section class="about" id="ueber-uns">
+      <div class="wrap about-grid">
+        <div>
+          <p class="section-kicker">Über knollinnovations</p>
+          <h2>Technik. Innovation. Fortschritt.</h2>
+          <p class="about-copy"><strong>knollinnovations</strong> steht für die Entwicklung und Automatisierung mechatronischer Systeme. Von der Analyse einer Aufgabenstellung über die Konzeption bis zur technischen Umsetzung liegt der Fokus auf durchdachten und praxistauglichen Lösungen.</p>
+          <p class="about-copy">Jedes Projekt beginnt mit einer konkreten Herausforderung. Ziel ist eine Lösung, die technisch überzeugt und im Alltag einen echten Unterschied macht.</p>
+          <a class="button" href="#kontakt">Zusammenarbeit anfragen <span aria-hidden="true">→</span></a>
+        </div>
+        <div class="about-art" aria-label="Abstrakte technische Illustration mit Zahnrädern">
+          <svg class="gear" viewBox="0 0 100 100" fill="none" aria-hidden="true"><path d="M40 3h20l3 10a39 39 0 0 1 8 3l9-5 14 14-5 9a39 39 0 0 1 3 8l10 3v20l-10 3a39 39 0 0 1-3 8l5 9-14 14-9-5a39 39 0 0 1-8 3l-3 10H40l-3-10a39 39 0 0 1-8-3l-9 5L6 85l5-9a39 39 0 0 1-3-8L-2 65V45l10-3a39 39 0 0 1 3-8l-5-9 14-14 9 5a39 39 0 0 1 8-3l3-10Z" transform="translate(4 -4) scale(.92)" stroke="currentColor" stroke-width="4" stroke-linejoin="round"/><circle cx="50" cy="50" r="17" stroke="currentColor" stroke-width="5"/></svg>
+          <svg class="gear-two" viewBox="0 0 100 100" fill="none" aria-hidden="true"><path d="M40 3h20l3 10a39 39 0 0 1 8 3l9-5 14 14-5 9a39 39 0 0 1 3 8l10 3v20l-10 3a39 39 0 0 1-3 8l5 9-14 14-9-5a39 39 0 0 1-8 3l-3 10H40l-3-10a39 39 0 0 1-8-3l-9 5L6 85l5-9a39 39 0 0 1-3-8L-2 65V45l10-3a39 39 0 0 1 3-8l-5-9 14-14 9 5a39 39 0 0 1 8-3l3-10Z" transform="translate(4 -4) scale(.92)" stroke="currentColor" stroke-width="4" stroke-linejoin="round"/><circle cx="50" cy="50" r="17" stroke="currentColor" stroke-width="5"/></svg>
+          <div class="art-caption">Technische Herausforderungen. Individuell gelöst.</div>
+        </div>
+      </div>
+    </section>
+
+    <section class="process" id="ablauf">
+      <div class="wrap">
+        <p class="section-kicker">Von der Idee zur Lösung</p>
+        <h2>Ein klarer Weg zum Ergebnis.</h2>
+        <p class="section-intro">Eine gute technische Lösung entsteht durch Verständnis, sorgfältige Entwicklung und eine Umsetzung, die sich an den tatsächlichen Anforderungen orientiert.</p>
+        <div class="process-grid">
+          <article class="process-card"><div class="process-number">01 / VERSTEHEN</div><h3>Aufgabe analysieren</h3><p>Wir klären Ziele, Anforderungen und technische Rahmenbedingungen als Basis für das weitere Vorgehen.</p></article>
+          <article class="process-card"><div class="process-number">02 / ENTWICKELN</div><h3>Lösung konzipieren</h3><p>Aus Anforderungen werden ein durchdachtes Konzept und ein sinnvoller technischer Lösungsansatz.</p></article>
+          <article class="process-card"><div class="process-number">03 / UMSETZEN</div><h3>In die Praxis bringen</h3><p>Der Fokus liegt auf einer zuverlässigen, praxistauglichen Umsetzung und einer klaren Abstimmung.</p></article>
+        </div>
+      </div>
+    </section>
+
+    <section class="contact" id="kontakt">
+      <div class="wrap contact-inner">
+        <div><p class="section-kicker">Kontakt</p><h2>Sie haben eine technische Herausforderung?</h2><p>Erzählen Sie uns kurz von Ihrem Vorhaben. Gemeinsam können wir die nächsten Schritte besprechen.</p></div>
+        <!-- Bitte die E-Mail-Adresse unten ersetzen, bevor die Website veröffentlicht wird. -->
+        <a class="button" href="mailto:IHRE-EMAIL-ADRESSE-HIER">Kontakt aufnehmen <span aria-hidden="true">→</span></a>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="wrap footer-inner">
+      <div>© <span id="year"></span> knollinnovations · Entwicklung · Automatisierung · Mechatronik</div>
+      <div class="footer-links"><a href="#kontakt">Kontakt</a><a href="impressum.html">Impressum</a><a href="datenschutz.html">Datenschutz</a></div>
+    </div>
+  </footer>
+  <script>
+    const menuButton = document.getElementById('menuButton');
+    const navlinks = document.getElementById('navlinks');
+    menuButton.addEventListener('click', () => {
+      const isOpen = navlinks.classList.toggle('open');
+      menuButton.setAttribute('aria-expanded', String(isOpen));
+    });
+    navlinks.querySelectorAll('a').forEach(link => link.addEventListener('click', () => {
+      navlinks.classList.remove('open');
+      menuButton.setAttribute('aria-expanded', 'false');
+    }));
+    document.getElementById('year').textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>
